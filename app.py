@@ -25,12 +25,17 @@ def main():
 
 @app.route("/SA",methods=["GET","POST"])
 def SA():
-    return(render_template("SA.html"))
+    r = None
+    if request.method == "POST":
+        q = request.form.get("q")
+        if q:
+            r = textblob.TextBlob(q).sentiment 
+    return(render_template("SA.html", r=r))
 
 @app.route("/SA_result",methods=["GET","POST"])
 def SA_result():
     q = request.form.get("q")
-    r = textblob.TextBlob(q).sentiment
+    r = textblob.TextBlob(q).sentiment 
     return(render_template("SA_result.html",r=r))
 
 @app.route("/GenAI",methods=["GET","POST"])
