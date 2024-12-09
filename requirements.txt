@@ -2,3 +2,4 @@ flask
 #通过这个文件，可以一次性下载所有需要的pack，每次需要pip的时候把对应的包写在这里
 gunicorn
 textblob
+google-generativeai
